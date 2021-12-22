@@ -1,12 +1,13 @@
-package sort;
+package test.sort;
 
 import org.junit.jupiter.api.Test;
+import sort.InsertionSort;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class InsertionSortTest {
     @Test
-    void emptyArrayInsertionSort() {
+    void insertionSort_emptyArray() {
         int[] arr = {};
         InsertionSort.insertionSort(arr);
         assertArrayEquals(new int[0], arr);
