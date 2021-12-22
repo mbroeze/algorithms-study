@@ -22,7 +22,7 @@ package sort;
  *
  * Maintenance is a little more tricky as it requires considering a loop invariant for the algorithm that shifts each
  * element up by one. This algorithm considers an element E at idx, and begins at jdx=idx-1.
- * I <i>suspect</i> the loop invariant for this algorithm is something along the lines of:
+ * I *suspect* the loop invariant for this algorithm is something along the lines of:
  * - the elements at [0,jdx) (possibly empty when jdx=0) are sorted and consist of the elements originally at [0,jdx),
  * - the elements at (jdx, idx] (possibly empty when jdx=idx) are sorted, and consists of the elements originally at [jdx, idx)
  * - E is less than each of the elements at (jdx,idx].
