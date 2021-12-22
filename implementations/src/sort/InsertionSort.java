@@ -3,7 +3,7 @@ package sort;
 /**
  * The insertion sort algorithm says that if the first k elements of a sequence are ordered from least to greatest,
  * then we can order the first k+1 elements by shifting all elements greater than the k+1th element up one place
- * in the sequence, and inserting the previous k+tth element at the previous place of the last element that was shifted.
+ * in the sequence, and inserting the previous k+1th element at the previous place of the last element that was shifted.
  *
  * Insertion sort is in O(n^2), and is efficient for a small number of elements.
  */
