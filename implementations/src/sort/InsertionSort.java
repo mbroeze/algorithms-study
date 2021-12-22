@@ -21,11 +21,11 @@ package sort;
  *   guarantees that all previous elements are sorted, so the array is sorted.
  *
  * Maintenance is a little more tricky as it requires considering a loop invariant for the algorithm that shifts each
- * element up by one. This algorithm considers an element E at idx, and begins at jdx=idx-1.
+ * element up by one. This algorithm considers an element E at idx, and begins at jdx=idx.
  * I *suspect* the loop invariant for this algorithm is something along the lines of:
  * - the elements at [0,jdx) (possibly empty when jdx=0) are sorted and consist of the elements originally at [0,jdx),
  * - the elements at (jdx, idx] (possibly empty when jdx=idx) are sorted, and consists of the elements originally at [jdx, idx)
- * - E is less than each of the elements at (jdx,idx].
+ * - E is less or equal to the element at jdx+1.
  *
  * Insertion sort is in O(n^2), and is efficient for a small number of elements.
  */
@@ -42,17 +42,17 @@ public class InsertionSort {
             int currentElement = inputArray[idx];
 
             // consider elements of inputArray at indexes less than idx
-            int jdx = idx - 1;
+            int jdx = idx;
 
-            // while jdx is a valid index, and the element at jdx is greater than the current element
-            while (jdx >= 0 && inputArray[jdx] > currentElement) {
+            // while jdx-1 is a valid index, and the element at jdx-1 is greater than the current element
+            while (jdx > 0 && inputArray[jdx - 1] > currentElement) {
+                jdx--;
                 // shift the element at jdx ahead by one place
                 inputArray[jdx + 1] = inputArray[jdx];
-                jdx--;
             }
 
-            // insert the current element; add one to jdx to account for decrement in last while loop (or initialization of jdx)
-            inputArray[jdx + 1] = currentElement;
+            // insert the current element in the place where the previous element was shifted from (possibly unchanged)
+            inputArray[jdx] = currentElement;
         }
     }
 }
