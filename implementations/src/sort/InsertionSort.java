@@ -18,7 +18,8 @@ package sort;
  * Considering the insertion sort algorithm...
  * - initialization: the element at index 0 is not changed, and a single element is in sorted order.
  * - termination: the algorithm terminates when idx is greater than the length of the array; the loop invariant
- *   guarantees that all previous elements are sorted, so the array is sorted.
+ *   guarantees that all elements with index less than idx are those that were originally in the array, and that
+ *   these elements are in sorted order.
  *
  * Maintenance is a little more tricky as it requires considering a loop invariant for the algorithm that shifts each
  * element up by one. This algorithm considers an element E at idx, and begins at jdx=idx.
@@ -37,8 +38,9 @@ public class InsertionSort {
      */
     public static void insertionSort(int[] inputArray) {
         // begin at the second element of the list, and proceed to each element thereafter
+
         for (int idx = 1; idx < inputArray.length; idx++) {
-            // we compare the current element against each previous element until they are no longer greater than the current element
+            // compare the current element against each previous element until they are no longer greater than the current element
             int currentElement = inputArray[idx];
 
             // consider elements of inputArray at indexes less than idx
@@ -46,7 +48,9 @@ public class InsertionSort {
 
             // while jdx-1 is a valid index, and the element at jdx-1 is greater than the current element
             while (jdx > 0 && inputArray[jdx - 1] > currentElement) {
+                // decrement here; prev index of last shifted element used to insert currentElement into the array
                 jdx--;
+
                 // shift the element at jdx ahead by one place
                 inputArray[jdx + 1] = inputArray[jdx];
             }
